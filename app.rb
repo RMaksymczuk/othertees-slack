@@ -27,7 +27,7 @@ post '/gateway' do
         tshirt_info_string(title, image_url)
       end
 
-      items.join(' \n')
+      respond_message items.join(' ')
     else
       image = Nori.new.parse resp["rss"]['channel']['item'][0]["description"]
 
