@@ -24,7 +24,7 @@ get '/gateway' do
       image_url = image['a']['img']['@src']
       title = image['a']['img']['@title']
 
-      respond_message tshirt_info_string(title: title, url: image_url)
+      respond_message tshirt_info_string(title, image_url)
     when 'available'
       items = resp["rss"]['channel']['item']
       items.select!{ |item| (Time.parse(item['pubDate']) + (2*24*60*60)) > Time.now}
@@ -34,7 +34,7 @@ get '/gateway' do
         image_url = image['a']['img']['@src']
         title = image['a']['img']['@title']
 
-        tshirt_info_string(title: title, url: image_url)
+        tshirt_info_string(title, image_url)
       end
 
       items.join(' \n')
@@ -46,6 +46,6 @@ def respond_message message
   {:text => message}.to_json
 end
 
-def tshirt_info_string(url:, title:)
+def tshirt_info_string(title, url)
   "#{title} #{url}"
 end
