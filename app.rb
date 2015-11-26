@@ -15,27 +15,24 @@ post '/gateway' do
   resp = JSON.parse(resp.to_json)
 
   case message
-    when 'available'
-      items = resp["rss"]['channel']['item']
-      items.select!{ |item| (Time.parse(item['pubDate']) + (2*24*60*60)) > Time.now}
-
-      items.map! do |item|
-        image = Nori.new.parse item["description"]
-        image_url = image['a']['img']['@src']
-        title = image['a']['img']['@title']
-
-        tshirt_info_string(title, image_url)
-      end
-
-      respond_message items.join(' ')
-    else
-      image = Nori.new.parse resp["rss"]['channel']['item'][0]["description"]
-
-      image_url = image['a']['img']['@src']
-      title = image['a']['img']['@title']
-
-      respond_message tshirt_info_string(title, image_url)
+  when 'available'
+    days_number = 2
+  else
+    days_number = 1
   end
+
+  items = resp["rss"]['channel']['item']
+  items.select!{ |item| (Time.parse(item['pubDate']) + (days_number*24*60*60)) > Time.now}
+
+  items.map! do |item|
+    image = Nori.new.parse item["description"]
+    image_url = image['a']['img']['@src']
+    title = image['a']['img']['@title']
+
+    tshirt_info_string(title, image_url)
+  end
+
+  respond_message items.join(' ')
 end
 
 def respond_message message
