@@ -2,7 +2,6 @@ require 'sinatra'
 require 'httparty'
 require 'nori'
 require 'json'
-require 'pry'
 
 get '/gateway' do
   if params[:text] && params[:trigger_word]
