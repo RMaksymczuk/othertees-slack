@@ -6,8 +6,6 @@ require 'json'
 post '/gateway' do
   if params[:text] && params[:trigger_word]
     message = params[:text].gsub(params[:trigger_word], '').strip.downcase
-  else
-    message = 'new'
   end
 
   othertees_feed_url = "http://www.othertees.com/feed/"
@@ -17,13 +15,6 @@ post '/gateway' do
   resp = JSON.parse(resp.to_json)
 
   case message
-    when 'new'
-      image = Nori.new.parse resp["rss"]['channel']['item'][0]["description"]
-
-      image_url = image['a']['img']['@src']
-      title = image['a']['img']['@title']
-
-      respond_message tshirt_info_string(title, image_url)
     when 'available'
       items = resp["rss"]['channel']['item']
       items.select!{ |item| (Time.parse(item['pubDate']) + (2*24*60*60)) > Time.now}
@@ -37,6 +28,13 @@ post '/gateway' do
       end
 
       items.join(' \n')
+    else
+      image = Nori.new.parse resp["rss"]['channel']['item'][0]["description"]
+
+      image_url = image['a']['img']['@src']
+      title = image['a']['img']['@title']
+
+      respond_message tshirt_info_string(title, image_url)
   end
 end
 
