@@ -3,7 +3,7 @@ require 'httparty'
 require 'nori'
 require 'json'
 
-get '/gateway' do
+post '/gateway' do
   if params[:text] && params[:trigger_word]
     message = params[:text].gsub(params[:trigger_word], '').strip.downcase
   else
