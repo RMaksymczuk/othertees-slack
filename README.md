@@ -16,3 +16,4 @@ Try it with https://othertees-slack.herokuapp.com/gateway if you want
 - https://api.slack.com/incoming-webhooks
 - https://api.slack.com/outgoing-webhooks
 - http://www.sitepoint.com/building-a-slackbot-with-ruby-and-sinatra/?utm_source=github
+- http://www.othertees.com/
