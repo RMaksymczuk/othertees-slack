@@ -8,7 +8,7 @@ You could use slack Incoming Webhooks, generate a link, and after deploying the 
 ## Outgoing Webhooks
 You could use slack Outgoing Webhooks and point it to your app-url/gateway. Than, when you call your trigger word, by default you will get recent tees from the very last day. By addition, when you add 'available' to your trigger word, you will get all, actualy available, tees.
 
-Try it with https://othertees-slack.herokuapp.com/gateway if you want
+Try it with https://othertees-slack.herokuapp.com/gateway if you want (call it with POST for test)
 
 ### Preview
 ![alt text](https://dl.dropboxusercontent.com/u/5171036/Screenshot%20from%202015-11-27%2009%3A40%3A36.png "othertees slac preview")
