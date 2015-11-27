@@ -10,6 +10,8 @@ You could use slack Outgoing Webhooks and point it to your app-url/gateway. Than
 
 Try it with https://othertees-slack.herokuapp.com/gateway if you want
 
+### Preview
+![alt text](https://dl.dropboxusercontent.com/u/5171036/Screenshot%20from%202015-11-27%2009%3A40%3A36.png "othertees slac preview")
 
 
 ### Sources
