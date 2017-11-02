@@ -23,4 +23,6 @@ def respond_message message
   {:text => message}.to_json
 end
 
+#nowy komentarz testujemy 
+
 
